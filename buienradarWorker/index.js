@@ -25,7 +25,9 @@ module.exports = function() {
 				var rainHue = (255 - parts[0] ) * 120 / 255;
 				var rgb = converter(rainHue,1,0.5);
 				return {
-					rain: "R" + rgb[0] + "G" + rgb[1] + "B" + rgb[2] + "E",
+					rain: parts[0],
+					colorString: "R" + rgb[0] + "G" + rgb[1] + "B" + rgb[2] + "E",
+					colorStringCss: "#" + toHex(rgb[0]) + toHex(rgb[1]) + toHex(rgb[2]),
 					time: parts[1]
 				}
 			});
@@ -33,6 +35,10 @@ module.exports = function() {
 			console.log(arr)
 			res.send(arr);
 		});
+	}
+
+	var toHex = function(value) {
+		return ('00' + value.toString(16).toUpperCase()).substr(-2,2);
 	}
 
 	return {
