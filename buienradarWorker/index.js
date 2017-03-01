@@ -85,8 +85,7 @@ module.exports = function() {
 				}
 			});
 
-			console.log(arr)
-			res.send(arr);
+			res.status(200).json(arr);
 		});
 	}
 
